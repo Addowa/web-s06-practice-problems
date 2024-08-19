@@ -37,6 +37,9 @@
       const turnOn = () => setOn(true)
       const turnOff = () => setOn(false)
       // 👈 PROBLEM 2
+      useEffect( () => {
+        if (on) console.log("Let there be light!")
+      }, [on])
       return (
         <main>
           <h1>The lights are {on ? 'ON' : 'OFF'}</h1>
@@ -46,7 +49,13 @@
     }
     function Bulb({ isOn, turnOn, turnOff }) {
       // 👈 PROBLEM 1
+      useEffect( () => {
+        console.log("Bulb ready to use")
+      }, [])
       // 👈 PROBLEM 3
+      useEffect( () => {
+        if (!isOn) console.log("I can't see anything!")
+      }, [isOn])
       return (
         <>
           <div className="emoji">{isOn ? '💡' : '🌌'}</div>
